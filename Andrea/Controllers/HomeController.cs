@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Andrea.DAL;
+using Microsoft.EntityFrameworkCore;
 
 namespace Andrea.Controllers
 {
@@ -15,7 +16,7 @@ namespace Andrea.Controllers
         {
             try
             {
-                ViewBag.PostList = _context.BlogPosts.ToList();
+                ViewBag.PostList = _context.BlogPosts.Include(c => c.Id_Cat).ToList();
                 return View();
             }
             catch (Exception ex)

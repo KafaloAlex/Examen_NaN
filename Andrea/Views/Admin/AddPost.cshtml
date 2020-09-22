@@ -2,8 +2,7 @@
 @model Andrea.Models.BlogPost
 
 @{
-    ViewBag.Title = "AddPost";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_AdminPage.cshtml";
 }
 
 
@@ -46,12 +45,12 @@
                     <div class="row">
                         @if (Model == null)
                         {
-                            <input type="submit" id="enregistrer" name="enregistrer" value="Add" class="btn btn-primary" />
+                            <input type="submit" id="enregistrer" name="enregistrer" value="Add" class="btn btn-primary p-2" />
                         }
                         else
                         {
-                            <input type="submit" id="modify" name="modify" value="Save Change" class="btn btn-success" />
-                            <a href="~/Admin/AddPost" class="btn btn-default">Cancel</a>
+                            <input type="submit" id="modify" name="modify" value="Save Change" class="btn btn-success p-2" />
+                            <a href="~/Admin/AddPost" class="btn btn-danger p-2">Cancel</a>
                         }
                     </div>
 
@@ -109,5 +108,5 @@
 
 
         </div>
-</section>
+    </section>
 </div>

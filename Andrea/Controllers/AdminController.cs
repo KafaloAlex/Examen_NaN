@@ -17,8 +17,15 @@ namespace Andrea.Controllers
         // GET: Admin
         public ActionResult Index()
         {
-            var model = _context.Categories.ToList();
-            return View(model);
+            try
+            {
+                ViewBag.PostList = _context.BlogPosts.ToList();
+                return View();
+            }
+            catch (Exception ex)
+            {
+                return HttpNotFound();
+            }
         }
         
         public ActionResult AddCategory()
