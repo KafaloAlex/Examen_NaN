@@ -1,0 +1,113 @@
+﻿
+@model Andrea.Models.BlogPost
+
+@{
+    ViewBag.Title = "AddPost";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div id="colorlib-main">
+    <section class="ftco-section ftco-no-pt ftco-no-pb">
+        <div class="container">
+            <h2>AddPost</h2>
+
+            @if (ViewBag.Message != null)
+            {
+                <div class="container">
+                    <div class="alert alert-success container" role="alert">
+                        <h4 class="alert-heading">Effectué!!</h4>
+                        <p>Post enregistré avec succès</p>
+                    </div>
+                </div>
+            }
+
+
+            <div class="container">
+                <form action="" method="post" enctype="multipart/form-data">
+                    @if (Model != null)
+                    {
+                        <input type="hidden" name="Id_Post" id="Id_Post" value="@Model.Id_Blog" />
+                    }
+
+                    <div class="form-group">
+                        <label>Title</label><span style="color:red; font-weight:bold">*</span>
+                        <input type="text" class="form-control" id="Title_Blog" name="Title_Blog" placeholder="Titre du Poste" value="@(Model!=null? Model.Title_Blog : "")" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Description</label><span style="color:red; font-weight:bold">*</span>
+                        <textarea type="text" class="form-control" id="Description_Blog" name="Description_Blog" placeholder="Description" required>@(Model!=null? Model.Description_Blog : "")</textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Image</label>
+                        <input type="file" class="form-control" id="Img_Blog" name="Img_Blog" placeholder="Choississez votre image" />
+                    </div>
+
+                    <div class="row">
+                        @if (Model == null)
+                        {
+                            <input type="submit" id="enregistrer" name="enregistrer" value="Add" class="btn btn-primary" />
+                        }
+                        else
+                        {
+                            <input type="submit" id="modify" name="modify" value="Save Change" class="btn btn-success" />
+                            <a href="~/Admin/AddPost" class="btn btn-default">Cancel</a>
+                        }
+                    </div>
+
+                </form>
+            </div>
+
+
+            <!-- Blog Area Start -->
+            <div class="roberto-news-area section-padding-100-0">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-12 col-lg-8">
+
+                            @foreach (var data in ViewBag.PostList)
+                            {
+                                <div class="row px-md-4">
+                                    <div class="col-md-12">
+                                        <div class="blog-entry ftco-animate d-md-flex">
+                                            <a href="single.html" class="img img-2" style="background-image: url(../Fichier/@data.Img_Blog);"></a>
+                                            <div class="text text-2 pl-md-4">
+                                                <h3 class="mb-2"><a href="single.html">@data.Title_Blog</a></h3>
+                                                <div class="meta-wrap">
+                                                    <p class="meta">
+                                                        <span><i class=" fa fa-calendar mr-2"></i>June 28, 2019 @data.Date_Post.ToString("MMMM dd, yyyy")</span>
+                                                        <span><a href="single.html"><i class="fa fa-folder-o mr-2"></i>Travel</a></span>
+                                                        <span><i class="fa fa-comment mr-2"></i>5 Comment</span>
+                                                    </p>
+                                                </div>
+                                                <p class="mb-4">@data.Description_Blog</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <a href="~/Admin/ModifyPost/@data.Id_Blog" class="btn btn-warning btn-sm"><span class="fa fa-edit"></span> Modify</a>
+                                <a href="~/Admin/DeletePost/@data.Id_Blog" class="btn btn-danger btn-sm"><span class="fa fa-remove"></span> Delete</a>
+                                <hr style="color:darkcyan; height:20px" />
+                            }
+
+                            <!-- Pagination -->
+                            <nav class="roberto-pagination wow fadeInUp mb-100" data-wow-delay="600ms">
+                                <ul class="pagination">
+                                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">Next <i class="fa fa-angle-right"></i></a></li>
+                                </ul>
+                            </nav>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <!-- Blog Area End -->
+
+
+        </div>
+</section>
+</div>

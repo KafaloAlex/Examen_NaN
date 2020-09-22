@@ -11,6 +11,8 @@ namespace Andrea.Models
         [Key]
         public int Id_Cat { get; set; }
 
+
+        [Display(Name ="Nom de la catégorie")]
         public string Name_Cat { get; set; }
 
         public virtual ICollection<BlogPost> blogPosts { get; set; }

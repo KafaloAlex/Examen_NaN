@@ -1,0 +1,43 @@
+﻿@model Andrea.Models.Category
+
+
+@{
+    ViewBag.Title = "AddCategory";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <div id="colorlib-main">
+        <section class="ftco-section ftco-no-pt ftco-no-pb">
+            <div class="container">
+
+                <h2>AddCategory</h2>
+
+
+                @if (ViewBag.Message != null)
+                {
+                    <div class="container">
+                        <div class="alert alert-success container" role="alert">
+                            <h4 class="alert-heading">Effectué!!</h4>
+                            <p>Catégorie enregistré avec succès</p>
+                        </div>
+                    </div>
+                }
+
+
+
+                @using (Html.BeginForm("AddCategory", "Admin", FormMethod.Post, new { @class = "formular", role = "form" }))
+                {
+
+                    <div class="form-group col-md-6 mb-5">
+                        @Html.LabelFor(m => m.Name_Cat)
+                        @Html.TextBoxFor(m => m.Name_Cat, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Name_Cat, "", new { @class = "text-danger" })
+                    </div>
+
+                    <button type="submit" class="btn-green">
+                        Enregistrer
+                    </button>
+                }
+            </div>
+</section>
+</div>

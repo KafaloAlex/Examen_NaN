@@ -1,16 +1,17 @@
-﻿using System;
+﻿using Andrea.DAL;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using Andrea.DAL;
 
 namespace Andrea.Controllers
 {
-    public class HomeController : Controller
+    public class FashionController : Controller
     {
         AndreaDbContext _context = new AndreaDbContext();
 
+        // GET: Fashion
         public ActionResult Index()
         {
             try
@@ -24,16 +25,9 @@ namespace Andrea.Controllers
             }
         }
 
-
-        public ActionResult DetailPost(int id)
+        /*public ActionResult DetailBlog(int id)
         {
-            var blog = _context.BlogPosts.SingleOrDefault(c => c.Id_Blog == id);
-
-            if (blog == null)
-                return HttpNotFound();
-
-            return View(blog);
-        }
-
+            
+        }*/
     }
 }

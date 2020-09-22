@@ -1,0 +1,49 @@
+﻿
+@model Andrea.Models.BlogPost
+
+@{
+    ViewBag.Title = "AddPost";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div id="colorlib-main">
+    <section class="ftco-section ftco-no-pt ftco-no-pb">
+        <div class="container">
+            <div class="row px-md-4">
+                @foreach (var data in ViewBag.PostList)
+                {
+                    <div class="col-md-12">
+                        <div class="blog-entry ftco-animate d-md-flex">
+                            <a href="single.html" class="img img-2" style="background-image: url(../Fichier/@data.Img_Blog);"></a>
+                            <div class="text text-2 pl-md-4">
+                                <h3 class="mb-2"><a href="single.html">@data.Title_Blog</a></h3>
+                                <div class="meta-wrap">
+                                    <p class="meta">
+                                        <span><i class="icon-calendar mr-2"></i>@data.Date_Post.ToString("MMM dd, yyyy")</span>
+                                        <span><a href="single.html"><i class="icon-folder-o mr-2"></i>Travel</a></span>
+                                        <span><i class="icon-comment2 mr-2"></i>5 Comment</span>
+                                    </p>
+                                </div>
+                                <p class="mb-4">@data.Description_Blog</p>
+                                <p><a href="#" class="btn-custom">Read More <span class="fa fa-arrow-right"></span></a></p>
+                            </div>
+                        </div>
+                    </div>
+
+                }
+            </div>
+                            <!-- Pagination -->
+                            <nav class="roberto-pagination wow fadeInUp mb-100" data-wow-delay="600ms">
+                                <ul class="pagination">
+                                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">Next <i class="fa fa-angle-right"></i></a></li>
+                                </ul>
+                            </nav>
+            <!-- Blog Area End -->
+
+
+        </div>
+    </section>
+</div>
+
